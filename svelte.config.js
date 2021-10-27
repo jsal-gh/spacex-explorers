@@ -1,16 +1,30 @@
-import preprocess from 'svelte-preprocess';
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
+// import preprocess from 'svelte-preprocess';
+// /** @type {import('@sveltejs/kit').Config} */
+// const config = {
+// 	kit: {
+// 		// hydrate the <div id="svelte"> element in src/app.html
+// 		target: '#svelte'
+// 	},
+
+// 	preprocess: [
+// 		preprocess({
+// 			postcss: true
+// 		})
+// 	]
+// };
+
+// export default config;
+
+// svelte.config.js
+import adapter from '@sveltejs/adapter-static';
+
+export default {
 	kit: {
-		// hydrate the <div id="svelte"> element in src/app.html
-		target: '#svelte'
-	},
-
-	preprocess: [
-		preprocess({
-			postcss: true
+		adapter: adapter({
+			// default options are shown
+			pages: 'build',
+			assets: 'build',
+			fallback: null
 		})
-	]
+	}
 };
-
-export default config;
