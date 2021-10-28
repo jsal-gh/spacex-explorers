@@ -1,9 +1,9 @@
 <svelte:head>
-    <title>SpaceX Explorers</title>
+	<title>SpaceX Explorers</title>
 </svelte:head>
 
 <div class="m-8 space-x-2 text-lg">
-    <h1 class="text-4xl mb-8">Welcome to SvelteKit</h1>
+	<h1 class="text-4xl mb-8">Welcome to SvelteKit</h1>
 </div>
 <div class="m-8 space-x-2">
 	<p>
@@ -81,4 +81,3 @@
       <code>Done!</code>
     </pre>
 </div>
-
