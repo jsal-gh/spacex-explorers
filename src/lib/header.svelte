@@ -7,6 +7,7 @@
 			<a class="btn btn-ghost btn-sm rounded-btn" href="/"> Home </a>
 			<a class="btn btn-ghost btn-sm rounded-btn" href="/about"> About </a>
 			<a class="btn btn-ghost btn-sm rounded-btn" href="/missions"> Missions </a>
+			<a class="btn btn-ghost btn-sm rounded-btn" href="/chordpro"> ChordPro </a>
 		</div>
 	</div>
 </div>
