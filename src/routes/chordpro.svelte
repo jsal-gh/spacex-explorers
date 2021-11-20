@@ -18,6 +18,7 @@
 
 	let transposeLevel = 0;
 	let transpose = false;
+	let chorusDeco = '';
 	let html = '';
 	let chord = '';
 	let i = 0;
@@ -58,7 +59,7 @@
 		var last_was_lyric = false;
 		var transpose_chord = function (chord, trans) {
 			var notes = ['A', 'A#', 'B', 'C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#'];
-			if(transpose<0){
+			if (transpose < 0) {
 				var notes = ['A', 'Bb', 'B', 'C', 'Db', 'D', 'Eb', 'E', 'F', 'Gb', 'G', 'Ab'];
 			}
 			var regex = /([A-Z][b#]?)/g;
@@ -88,6 +89,21 @@
 			/* Comment, ignore */
 			if (line.match(/^#/)) {
 				return '';
+			}
+			// Check for chorus
+			if (line == '{soc}' || text == 'start_of_chorus') {
+				chorusDeco = '|' + '&nbsp;' + '&nbsp;' + '&nbsp;';
+				buffer.push(
+					'</div><br/><span class="text-yellow-500 text-xl font-mono font-semibold">CHORUS</span><br/>'
+				);
+				buffer.push('<div class="chorus_block">');
+				return;
+			}
+			if (line == '{eoc}' || text == 'end_of_chorus') {
+				chorusDeco = '';
+				buffer.push('</div><br/>');
+				buffer.push('<div class="lyric_block">');
+				return;
 			}
 			/* Chord line */
 			if (line.match(chordregex)) {
@@ -143,10 +159,9 @@
 				}, this);
 				buffer.push(
 					'<span class="line text-xl font-mono"><span class="text-yellow-500 font-semibold">' +
-						chords +
-						'</span><br/>\n' +
-						lyrics +
-						'</span><br/>'
+						chorusDeco + chords +
+						'</span><br/>\n<span class="text-yellow-500 font-semibold">' +
+						chorusDeco + '</span>' + lyrics + '</span><br/>'
 				);
 				return;
 			}
@@ -187,14 +202,14 @@
 					}
 					if (wrap) {
 						buffer.push('<div class="' + wrap + '">' + text + '</div>');
-						// buffer.push('<' + wrap + ' class="' + command + '">' + text + '</' + wrap + '>');
 					}
 				}
 				// work from here to add wrapping commands
 				return;
 			}
-			/* Anything else */
-			buffer.push(line + '<br/>');
+			/* Anything else - ie. no chords, just text */
+			buffer.push('<div class="text-xl font-mono"><span class="text-yellow-500">' + chorusDeco + "</span>" + '</div>');
+			buffer.push('<div class="text-xl font-mono"><span class="text-yellow-500">' + chorusDeco + "</span>" + line + '</div>');
 		}, this);
 		buffer.push('</div>');
 		return buffer.join('\n');
@@ -204,80 +219,67 @@
 <h1 class="m-8">ChordPro Rendering Engine</h1>
 
 <div class="flex-row">
-
-
-
-<div class="flex">
-	<container class="m-8">
-		<span class="label-text"><h2>
-			Enter your ChordPro Markup Below:
-		</h2></span>
-		<p>&nbsp;</p>
-		<textarea
-			class="textarea h-96 textarea-bordered textarea-primary text-xl"
-			placeholder="Paste ChordPro text here..."
-			bind:value={inputText}
-		/>
-		<div>
+	<div class="flex">
+		<container class="m-8">
+			<span class="label-text"><h2>Enter your ChordPro Markup Below:</h2></span>
 			<p>&nbsp;</p>
-			<p>&nbsp;</p>
-			<span class="label-text"><h2>
-				Transpose?
-			</h2></span>
-			<p>&nbsp;</p>
-			<div class="transpose">
-				<button class="btn btn" align-middle on:click={transposeDown}>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-5 w-5"
-						viewBox="0 0 20 20"
-						fill="currentColor"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-							clip-rule="evenodd"
-						/>
-					</svg>
-				</button>
-				<span class="align-top text-4xl">
-					{transposeLevel}
-				</span>
-				<button class="btn btn" align-middle on:click={transposeUp}>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						class="h-5 w-5"
-						viewBox="0 0 20 20"
-						fill="currentColor"
-					>
-						<path
-							fill-rule="evenodd"
-							d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
-							clip-rule="evenodd"
-						/>
-					</svg>
-				</button>
+			<textarea
+				class="textarea h-96 textarea-bordered textarea-primary text-xl"
+				placeholder="Paste ChordPro text here..."
+				bind:value={inputText}
+			/>
+			<div>
+				<p>&nbsp;</p>
+				<p>&nbsp;</p>
+				<span class="label-text"><h2>Transpose?</h2></span>
+				<p>&nbsp;</p>
+				<div class="transpose">
+					<button class="btn btn" align-middle on:click={transposeDown}>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-5 w-5"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</button>
+					<span class="align-top text-4xl">
+						{transposeLevel}
+					</span>
+					<button class="btn btn" align-middle on:click={transposeUp}>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-5 w-5"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</button>
+				</div>
 			</div>
-		</div>
-	</container>
+		</container>
 
-	<container class="m-8 flex-grow">
-		<span class="label-text">
-			<h2>
-				Rendered target text:
-			</h2>
-		</span>
-		<p>&nbsp;</p>
-		<div class="textarea textarea-bordered textarea-primary w-90 flex-grow">
-			{@html html}
-		</div>
-	</container>
+		<container class="m-8 flex-grow">
+			<span class="label-text">
+				<h2>Rendered target text:</h2>
+			</span>
+			<p>&nbsp;</p>
+			<div class="textarea textarea-bordered textarea-primary w-90 flex-grow">
+				{@html html}
+			</div>
+		</container>
+	</div>
 </div>
-</div>
-
-
-
-
 
 <style>
 	textarea {
@@ -292,6 +294,4 @@
 		color: #f40;
 		font-size: 1.4rem;
 	}
-
-	
 </style>
