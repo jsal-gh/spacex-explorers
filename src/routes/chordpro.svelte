@@ -27,6 +27,7 @@
 {comment: Awesome conversion modified by Giovanni}
 
 [Cm].... [G7].... [Cm].... [G7]....
+
 [Cm]Cerco l'e[G7]state tutto l'[Cm]anno[G7] e all'improv[Cm]viso[G7] eccola [Cm]qua
 [Fm]Lei è par[C7]tita per le [Fm]spiagge[C7] e sono [Fm]solo[C7] quaggiù in [Fm]città
 [C]sento vo[G7]lare sopra i [Em7]tetti[A7] un aero[D7]plano[G7] che se ne [C]va [G7]
@@ -123,14 +124,14 @@ Ma il treno dei desideri nei miei pensieri all'incontrario va
 			if (line == '{soc}' || text == 'start_of_chorus') {
 				chorusDeco = '|' + '&nbsp;' + '&nbsp;' + '&nbsp;';
 				buffer.push(
-					'</div><br/><span class="text-yellow-500 text-xl font-mono font-semibold">CHORUS</span><br/>'
+					'</div><br/><span class="text-yellow-500 text-xl font-mono font-semibold">CHORUS</span>'
 				);
 				buffer.push('<div class="chorus_block">');
 				return;
 			}
 			if (line == '{eoc}' || text == 'end_of_chorus') {
 				chorusDeco = '';
-				buffer.push('</div><br/>');
+				buffer.push('</div>');
 				buffer.push('<div class="lyric_block">');
 				return;
 			}
@@ -190,7 +191,7 @@ Ma il treno dei desideri nei miei pensieri all'incontrario va
 					'<span class="line text-xl font-mono"><span class="text-yellow-500 font-semibold">' +
 						chorusDeco + chords +
 						'</span><br/>\n<span class="text-yellow-500 font-semibold">' +
-						chorusDeco + '</span>' + lyrics + '</span><br/>'
+						chorusDeco + '</span>' + lyrics + '</span>'
 				);
 				return;
 			}
@@ -237,7 +238,7 @@ Ma il treno dei desideri nei miei pensieri all'incontrario va
 				return;
 			}
 			/* Anything else - ie. no chords, just text */
-			buffer.push('<div class="text-xl font-mono"><span class="text-yellow-500">' + chorusDeco + "</span>" + '</div>');
+			buffer.push('<div class="text-xl font-mono"><span class="text-yellow-500">' + chorusDeco + "</span>" + '&nbsp;' + '</div>');
 			buffer.push('<div class="text-xl font-mono"><span class="text-yellow-500">' + chorusDeco + "</span>" + line + '</div>');
 		}, this);
 		buffer.push('</div>');
