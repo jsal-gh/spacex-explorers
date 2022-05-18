@@ -8,6 +8,9 @@
 			<a class="btn btn-ghost btn-sm rounded-btn" href="/about"> About </a>
 			<a class="btn btn-ghost btn-sm rounded-btn" href="/missions"> Missions </a>
 			<a class="btn btn-ghost btn-sm rounded-btn" href="/chordpro"> ChordPro </a>
+			<a class="btn btn-ghost btn-sm rounded-btn" href="/fileUpload"> File Upload </a>
+			<a class="btn btn-ghost btn-sm rounded-btn" href="/stopwatch"> Stop Watch </a>
+			<a class="btn btn-ghost btn-sm rounded-btn" href="/karaoke"> Karaoke </a>
 		</div>
 	</div>
 </div>
