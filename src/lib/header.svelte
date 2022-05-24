@@ -11,6 +11,7 @@
 			<a class="btn btn-ghost btn-sm rounded-btn" href="/fileUpload"> File Upload </a>
 			<a class="btn btn-ghost btn-sm rounded-btn" href="/stopwatch"> Stop Watch </a>
 			<a class="btn btn-ghost btn-sm rounded-btn" href="/karaoke"> Karaoke </a>
+			<a class="btn btn-ghost btn-sm rounded-btn" href="/songList"> Song List </a>
 		</div>
 	</div>
 </div>

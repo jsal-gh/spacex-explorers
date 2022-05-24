@@ -44,51 +44,116 @@
 	};
 </script>
 
-<div class="flex-no-wrap bg-gradient-to-br from-blue-500 to-green-400 pb-24">
-	<div class="p-2 ml-2 text-8xl">Azzurro</div>
-	<div class="p-2 ml-2 mb-2 text-2xl">Adriano Celentano</div>
+<div class="flex-no-wrap bg-gradient-to-br from-blue-500 to-purple-500 pb-32">
+	<div class="flex">
+		<div class="p-2 ml-2 text-8xl">Azzurro</div>
+		<div class="justify-end">
+			<div class="p-2 ml-2 mb-2 text-2xl">Adriano Celentano</div>
+			<audio class="p-2 ml-2" controls src=".\bringhimhome.mp3" bind:currentTime />
+		</div>
+	</div>
 
-	<audio controls src=".\bringhimhome.mp3" bind:currentTime />
-	<div class="flex flex-wrap font-mono text-8xl p-4 m-4 mt-12">
+	<!-- Chords and lyrics - main -->
+	<div class="flex flex-wrap font-mono text-5xl p-4 ml-16 mt-12">
 		{#if currentTime >= 0 && currentTime < 5}
-			<div class="mr-4">
-				<div class="text-yellow-400">Cm</div>
+			<div class="mr-4 mb-12 border">
+				<div class="text-yellow-400">1. Cm</div>
 				<div>Cerco l'est</div>
 			</div>
-			<div class="mr-4">
+			<div class="mr-4 mb-12 border">
 				<div class="text-yellow-400">G7</div>
 				<div>ate tutto l'</div>
 			</div>
-			<div class="mr-4">
+			<div class="mr-4 mb-12 border">
 				<div class="text-yellow-400">Cm</div>
-				<div>anno</div>
+				<div>anno&nbsp;</div>
 			</div>
-			<div class="mr-4">
+			<div class="mr-4 mb-12 border">
 				<div class="text-yellow-400">G7</div>
 				<div>e all'improvv</div>
 			</div>
-			<div class="mr-4">
+			<div class="mr-4 mb-12 border">
 				<div class="text-yellow-400">Cm</div>
-				<div>iso</div>
+				<div>iso&nbsp;</div>
 			</div>
-			<div class="mr-4">
+			<div class="mr-4 mb-12 border">
 				<div class="text-yellow-400">G7</div>
 				<div>eccola</div>
 			</div>
-			<div class="mr-4">
+			<div class="mr-4 mb-12 border">
 				<div class="text-yellow-400">Cm</div>
 				<div>qua</div>
 			</div>
-			<div class="mr-4">
+			<div class="mr-4 mb-12 border">
 				<div class="text-yellow-400">G7</div>
 			</div>
 		{/if}
 		{#if currentTime >= 5 && currentTime < 10}
-			Lei è partita per le spiagge e sono solo quaggiù in città
-		{/if}
+		<div class="mr-4 mb-16">
+			<div class="text-yellow-400">2. Cm</div>
+			<div>Cerco l'est</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">G7</div>
+			<div>ate tutto l'</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">Cm</div>
+			<div>anno</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">G7</div>
+			<div>e all'improvv</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">Cm</div>
+			<div>iso</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">G7</div>
+			<div>eccola</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">Cm</div>
+			<div>qua</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">G7</div>
+		</div>
+	{/if}
 		{#if currentTime >= 10 && currentTime < 15}
-			sento volare sopra i tetti un aeroplano che se ne va
-		{/if}
+		<div class="mr-4 mb-16">
+			<div class="text-yellow-400">3. Cm</div>
+			<div>Cerco l'est</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">G7</div>
+			<div>ate tutto l'</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">Cm</div>
+			<div>anno</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">G7</div>
+			<div>e all'improvv</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">Cm</div>
+			<div>iso</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">G7</div>
+			<div>eccola</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">Cm</div>
+			<div>qua</div>
+		</div>
+		<div class="mr-4">
+			<div class="text-yellow-400">G7</div>
+		</div>
+	{/if}
 	</div>
 </div>
 
